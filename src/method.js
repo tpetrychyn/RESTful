@@ -134,7 +134,7 @@ var Urlify = (function () {
      * create object href.
      */
     Urlify.prototype.object = function (req, data) {
-        var xport = (req["xport"] || 80);
+        var xport = (req.socket.localPort || 80);
         var url;
         if (xport !== 80) {
             url = data_1.toString("%s://%s:%d%s", req.protocol, req.hostname, xport, req.baseUrl);
@@ -162,7 +162,7 @@ var Urlify = (function () {
      * create collection of object href.
      */
     Urlify.prototype.collection = function (req, count) {
-        var xport = (req["xport"] || 80);
+        var xport = (req.socket.localPort || 80);
         var self = this;
         var collectionArgs = {
             href: "",
